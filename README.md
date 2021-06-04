@@ -11,7 +11,7 @@ Also to serve as practice, the data will be stored in a database after being upl
 These are the images we are using to serve as inspiration for our visualizations
 
 Map of US States using a scale to identify certain polygons. We would use this on a more local base, using scaled polygons to show median income in neighborhoods, to allow the user to see if they can see any trends for the restaurants and income.
-![image](https://user-images.githubusercontent.com/78449256/120745279-aae01600-c4b1-11eb-8786-e99b2b357479.png)
+![image](https://user-images.githubusercontent.com/78449256/120746172-82591b80-c4b3-11eb-9090-6942df3baefd.png)
 
 This plot shows markers which we would like to use to contain additional information about each restaurant, this will be able to be toggled on and off.
 ![image](https://user-images.githubusercontent.com/78449256/120745473-13c78e00-c4b2-11eb-9da8-7552b07d0dee.png)
