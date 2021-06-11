@@ -19,3 +19,4 @@ This plot shows markers which we would like to use to contain additional informa
 Finally, this d3 plot shows a trend that can be observed by the users, but also allows them to look specifically at certain teams. In our case we would use a general trend, such as Rating vs. Price point, and allow the user to see how specific attributes of each restaurant (like outdoor seating, wifi, etc.) are influenced by the trend.
 https://files.slack.com/files-pri/T01KR1BQWKX-F02409JPM3M/screen_shot_2021-06-03_at_9.18.01_pm.png
 
+https://medium.com/graphicacy/a-performant-mapbox-implementation-of-us-census-tracts-at-all-zoom-levels-c81ecbe191b7
