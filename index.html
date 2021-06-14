@@ -5,6 +5,9 @@
   <meta charset="utf-8">
   <title> YelProject</title>
 
+<!-- Bring in our bootstrap stylesheet -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -45,19 +48,56 @@
   <!-- The div where we will inject our map/ put this in a shell -->
   <h1 style="text-align: center;">Welcome to our YelProject</h1>
 <hr />
-<table style="border-collapse: collapse; width: 100%;" border="0">
+
+<div class="container">
+  <div class="row">
+<table class="table table-bordered table-striped text-center">
 <tbody>
 <tr>
-<td style="width: 50%;text-align: center;">What Questions Did We Plan on Answering?</td>
-<td style="width: 50%;text-align: center;">And How Would We Do It?</td>
+<td style="width: 40%;text-align: center;">
+  <h2>What Questions Did We Plan on Answering?</h2>
+
+  </td>
+<td style="width: 40%;text-align: center;">
+  <h2>And How Would We Do It? </h2></td>
 </tr>
 <tr>
-<td style="width: 50%;">1. How Strong is the Relationship between Price Range and Ratings on Yelp</td>
-<td style="width: 50%;"></td>
+  <td style="width: 50%;"><b>1. How Strong is the Relationship between Price Level and Ratings on Yelp</b></td>
+  <td style="width: 50%;">Create a intricate d3 plot highlighting the regression line between these two variables, as well as how common each rating and price are paired together.<br></td>
 </tr>       
+<tr>
+  <td style="width: 40%;"><b>2. What other factors play an important role in determining rating?</b></td>
+  <td style="width: 50%;">Sort through an entire yelp dataset and allow users on a web application to see trends based on specific attributes defined in Yelp Reviews.<br></td>
+</tr>   
+<tr>
+  <td style="width: 50%;"><b>3. Does the Socio-Economic Geography of a City impact the relationship between Price and Rating?</b></td>
+  <td style="width: 50%;">Built a Leaflet Map with layers for both median income and average restaurant rating. Allowing users to see and notice their own patterns in the data and enabling them to investigate with interactive markers placed for businesses with certain attributes. <br></td>
+</tr>   
 </tbody>
 </table>
-  <div id="map" width="500" height="500"></div>
+</div>
+
+<div class="container">
+  <div class='row'>
+    <!-- First of two columns -->
+    <div class="col-md-6">
+      <h2>The Relationship between Price and Rating</h2>
+      <a>Placeholder for Graph</a>
+    </div>
+    <div class="col-md-6">
+
+      <img  display="block" margin-left= "auto" margin-right= "auto" width="150px" id="Yelp Logo" src="https://www.prodigymovingandstorage.com/wp-content/uploads/2018/11/yelp-logo-3.png" alt="Yelp Logo"> 
+    </div>
+    </div>
+  </div>
+    <!-- Second of two columns -->
+</div>
+<hr>
+<!-- putting entire table in column on left side-->
+<div      width= "50%" id="map"height="500px"></div>
+
+</div>
+  
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
@@ -67,7 +107,7 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <!-- API key -->
   <script type="text/javascript" src="config.js"></script>
-  <!-- JS --> -->
+  <!-- JS --> 
   <script type="text/javascript" src="static/logic.js"></script>
   <!-- <script type="text/javascript" src="static/leaflet.js"></script> -->
 </body>
