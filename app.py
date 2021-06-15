@@ -7,7 +7,8 @@ from flask_pymongo import PyMongo
 app = Flask(__name__)
 
 # Use PyMongo to establish Mongo connection
-mongo = PyMongo(app, uri="mongodb://localhost:27017/yelp_basic_data")
+app.config["MONGO_URI"] = "mongodb://localhost:27017/Yelp"
+mongo = PyMongo(app)
 
 
 # Route to render index.html template using data from Mongo
@@ -15,9 +16,11 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/yelp_basic_data")
 def index():
 
     # Find one record of data from the mongo database
-    yelp_dict = mongo.db.yelp_basic_data.find_one()
+
+    yelp_dict = mongo.db.yelp_vegas.find()
+    income_data_mongo = mongo.db.income_data.find()
     # Return template and data
-    return render_template("index.html", yelp=yelp_dict)
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
