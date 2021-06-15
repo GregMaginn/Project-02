@@ -48,57 +48,72 @@ function createMap(incomeLayer){
     collapsed: false
   }).addTo(myMap);
 };
-
-
+// // Create a legend to display info
+// var legend = L.control({
+//   position: "bottomright"
+// });
+// // When layer control is added insert a div with class legend
+// legend.onAdd = function() {
+//   var div = L.DomUtil.create("div", "legend");
+//   return div;
+// };
+// //Add info to map
+// legend.addTo(myMap);
 
   // Use this link to get the geojson data.
-  var link = "static/data/Zip_Codes.geojson";
+var link = "static/data/Zip_Codes.geojson";
 
-  function chooseColor(income) {
-    switch (true) {
-    case income > 75000:
-      return "#001433";
-    case income > 60000:
-      return "#002966";
-    case income > 50000:
-      return "#003D99";
-    case income > 40000:
-      return "#0052CC";
-    case income > 30000:
-      return "#0066FF";
-    default:
-      return "#3385FF";
-    };
-  }  
+function chooseColor(income) {
+  switch (true) {
+  case income > 75000:
+    return "#001433";
+  case income > 60000:
+    return "#002966";
+  case income > 50000:
+    return "#003D99";
+  case income > 40000:
+    return "#0052CC";
+  case income > 30000:
+    return "#0066FF";
+  default:
+    return "#3385FF";
+  };
+}  
 
-  var incomeDict = {};
+// var legend = L.control({position: 'bottomright'});
 
-  // Grabbing our GeoJSON data..
-// d3.json(link).then(function(data) {
-//     // Creating a GeoJSON layer with the retrieved data
-//     L.geoJson(data).addTo(myMap);
-// });
+// legend.onAdd = function (myMap) {
+
+//     var div = L.DomUtil.create('div', 'info legend'),
+//         grades = ["$75K+", "$60K - $75K", "$50K - $59K", "$40K - $49K", "$30K - $39K", "$0 - $29K"],
+//         labels = [];
+
+//     // loop through our density intervals and generate a label with a colored square for each interval
+//     for (var i = 0; i < grades.length; i++) {
+//         div.innerHTML +=
+//             '<i style="background:' + chooseColor(grades[i] + 1) + '"></i> ' +
+//             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+//     }
+
+//     return div;
+// };
+// console.log(legend);
+
+// legend.addTo(myMap);
+
+var incomeDict = {};
+
 createMap(incomeLayer);
 
 d3.json(link).then(function(data) {
   d3.csv("Resources/kaggle_income.csv").then(function(incomeData) {
     // Step 4: Parse the data
-    // Format the data and convert to numerical and date values
-    // =================================
-    // Create a function to parse date and time
     
     // Format the data
     incomeData.forEach(function(data) {
       var zip = +data.Zip_Code
       var median = +data.Median
-      // var medIncome = {zip, median}
-      // row = {zip:median};
       incomeDict[zip] = median
-
-      // incomeDict.push(
-      //   row
-      //   // data["Zip_Code"] : data["Median"]
-      // )
     });
 
     incomeLayer.addData(data); 
@@ -114,8 +129,4 @@ d3.json(link).then(function(data) {
        
     });
   });
-  // Creating a geoJSON layer with the retrieved data
-
 });
-
-// console.log(incomeDict[0]);
