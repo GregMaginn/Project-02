@@ -120,7 +120,7 @@ d3.json(link).then(function(data) {
         return {
           color: "white",
           fillColor: chooseColor(incomeDict[feature.properties.ZIP]),
-          fillOpacity: 0.8,
+          fillOpacity: 0.5,
           weight: 1.5
         };
     });
