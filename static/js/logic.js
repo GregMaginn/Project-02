@@ -10,6 +10,7 @@ var link = "static/data/Zip_Codes.geojson";
 
 d3.csv("static/data/yelp_academic_dataset_business.csv").then(function(yelpData) {
   yelpData.forEach(function(data) {
+    var name = data.name
     var priceRange = data["attributes.Price Range"]
     var rating = +data["stars"]
     var lat = +data["latitude"]
@@ -22,7 +23,7 @@ d3.csv("static/data/yelp_academic_dataset_business.csv").then(function(yelpData)
 
     // For each station, create a marker and bind a popup with the station's name
     var priceMarker = L.marker([lat, long])
-    .bindPopup("<h3>" + priceRange + "<h3><h3>Rating: " + rating + "</h3>");
+    .bindPopup("<h2>"+ name + "</h2> <h3> Price Range: " + priceRange + "</h3><h3>Rating: " + rating + "</h3>");
 
       // Add the marker to the bikeMarkers array
     priceMarkers.push(priceMarker);
