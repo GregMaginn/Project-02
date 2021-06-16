@@ -4,6 +4,51 @@ var incomeLayer = L.geoJSON()
 var priceLayer = L.geoJSON()
 var priceMarkers = [];
 var incomeDict = {};
+// found these icon colors from a pulic use github lab to help color icons
+var redIcon = new L.Icon({
+	iconUrl: 'static/img/marker-icon-2x-red.png',
+	shadowUrl: 'static/img/marker-shadow.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowSize: [41, 41]
+});
+
+var greenIcon = new L.Icon({
+	iconUrl: 'static/img/marker-icon-2x-green.png',
+	shadowUrl: 'static/img/marker-shadow.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowSize: [41, 41]
+});
+
+var orangeIcon = new L.Icon({
+	iconUrl: 'static/img/marker-icon-2x-orange.png',
+	shadowUrl: 'static/img/marker-shadow.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowSize: [41, 41]
+});
+
+var yellowIcon = new L.Icon({
+	iconUrl: 'static/img/marker-icon-2x-yellow.png',
+	shadowUrl: 'static/img/marker-shadow.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowSize: [41, 41]
+});
+
+var blackIcon = new L.Icon({
+	iconUrl: 'static/img/marker-icon-2x-black.png',
+	shadowUrl: 'static/img/marker-shadow.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowSize: [41, 41]
+});
 
 // Use this link to get the geojson data.
 var link = "static/data/Zip_Codes.geojson";
@@ -16,14 +61,32 @@ d3.csv("static/data/yelp_academic_dataset_business.csv").then(function(yelpData)
     var lat = +data["latitude"]
     var long = +data["longitude"]
 
-
+    
     // Loop through the stations array
     // for (var index = 1; index < priceRange.length; index++) {
       // var station = priceRange[index];
-
-    // For each station, create a marker and bind a popup with the station's name
-    var priceMarker = L.marker([lat, long])
+    if (rating > 4){
+      var priceMarker = L.marker([lat, long], {icon: greenIcon})
     .bindPopup("<h2>"+ name + "</h2> <h3> Price Range: " + priceRange + "</h3><h3>Rating: " + rating + "</h3>");
+    }
+    else if (rating > 3){
+      var priceMarker = L.marker([lat, long], {icon: yellowIcon})
+    .bindPopup("<h2>"+ name + "</h2> <h3> Price Range: " + priceRange + "</h3><h3>Rating: " + rating + "</h3>");
+    }
+    else if (rating > 2){
+      var priceMarker = L.marker([lat, long], {icon: orangeIcon})
+    .bindPopup("<h2>"+ name + "</h2> <h3> Price Range: " + priceRange + "</h3><h3>Rating: " + rating + "</h3>");
+    }
+    else if (rating > 1){
+      var priceMarker = L.marker([lat, long], {icon: blackIcon})
+    .bindPopup("<h2>"+ name + "</h2> <h3> Price Range: " + priceRange + "</h3><h3>Rating: " + rating + "</h3>");
+    }
+    else {
+      var priceMarker = L.marker([lat, long], {icon: redIcon})
+    .bindPopup("<h2>"+ name + "</h2> <h3> Price Range: " + priceRange + "</h3><h3>Rating: " + rating + "</h3>");
+    }
+    // For each station, create a marker and bind a popup with the station's name
+    
 
       // Add the marker to the bikeMarkers array
     priceMarkers.push(priceMarker);
